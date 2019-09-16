@@ -6,8 +6,8 @@ import (
 )
 
 type Person struct {
-	Name string
-	Age  int
+	Name string `json:"name"`
+	Age  int    `json:"age"`
 }
 
 func main() {
@@ -27,5 +27,7 @@ func main() {
 	mslice = append(mslice, m) // 引用
 	j2, _ := json.Marshal(&mslice)
 	fmt.Println(string(j2))
-
+	// 反序列化
+	_ = json.Unmarshal(j2, &mslice)
+	fmt.Println(mslice)
 }
