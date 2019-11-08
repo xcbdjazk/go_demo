@@ -1,12 +1,10 @@
 package main
 
 import (
-	"bufio"
-	_ "encoding/binary"
+	"communication_system/model"
+	"communication_system/utils"
 	"fmt"
 	"net"
-	"os"
-	"strings"
 )
 
 func main() {
@@ -16,39 +14,21 @@ func main() {
 		return
 	}
 	defer conn.Close()
-	//var data []byte = []byte("asd")
-	//paklen := uint32(len(data))
-	//var nowByte []byte
-	//fmt.Println(paklen)
-	//binary.BigEndian.PutUint32(nowByte[0:4], paklen)
-	reader := bufio.NewReader(os.Stdin)
-
-	for {
-		line, err := reader.ReadString('\n')
-		if strings.Trim(line, " \r\n") == "exit" {
-			break
-		}
-		if err != nil {
-			fmt.Println("err__reader", err)
-			return
-		}
-		_, err = conn.Write([]byte(line))
-		if err != nil {
-			fmt.Println("err___Write", err)
-			return
-		}
-		for {
-			var b []byte = make([]byte, 1024)
-			n, err := conn.Read(b)
-			if err != nil {
-				fmt.Println("err__Read,", err, "退出链接")
-				break
-			}
-			if n == 0 {
-				break
-			}
-			fmt.Print(string(b[:n]))
-		}
+	var user model.User
+	fmt.Print("name")
+	_, _ = fmt.Scan(&user.UserName)
+	fmt.Print("password")
+	_, _ = fmt.Scan(&user.PassWord)
+	datas, err := user.Marshal()
+	if err != nil {
+		fmt.Println("user.Marshal_err", err)
+		return
 	}
-
+	err = utils.WriteMsg(conn, datas)
+	if err != nil {
+		fmt.Println("WriteMsg", err)
+		return
+	}
+	msgStr, err := utils.ReadMsg(conn)
+	fmt.Println(msgStr)
 }

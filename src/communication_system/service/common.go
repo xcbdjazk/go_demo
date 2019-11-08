@@ -1,29 +1,26 @@
 package main
 
 import (
+	"communication_system/utils"
 	"fmt"
 	"net"
 )
 
-func doRead(con net.Conn) {
+func doSomeThing(con net.Conn) {
 	defer con.Close()
-	for {
-		var b []byte = make([]byte, 1024)
-		n, err := con.Read(b)
-		if err != nil {
-			fmt.Println("err__Read,", err, "退出链接")
-			break
-		}
-		if n == 0 {
-			break
-		}
-		fmt.Print(string(b[:n]))
-	}
-	_, err := con.Write([]byte("hihihihihi"))
+	str, err := utils.ReadMsg(con)
 	if err != nil {
-		fmt.Println("service error", err)
+		fmt.Println("ReadMsg error ", err)
 		return
 	}
+	fmt.Println(str)
+	name := "hihihihihi"
+	err = utils.WriteMsg(con, name)
+	if err != nil {
+		fmt.Println("ReadMsg error ", err)
+		return
+	}
+
 }
 func main() {
 	listener, err := net.Listen("tcp", "0.0.0.0:8080")
@@ -38,6 +35,6 @@ func main() {
 			fmt.Println("err__Accept:", err)
 			return
 		}
-		go doRead(con)
+		go doSomeThing(con)
 	}
 }
