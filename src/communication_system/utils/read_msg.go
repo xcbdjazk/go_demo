@@ -22,6 +22,7 @@ func ReadMsg(con net.Conn) (str string, err error) {
 		fmt.Println("errr", err)
 		return
 	}
+
 	str = string(b1[:pagLength])
 	return
 }

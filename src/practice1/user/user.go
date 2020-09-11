@@ -31,13 +31,13 @@ func GetUser(name, pwd string) (User, bool) {
 	return User{}, false
 }
 
-func GetUserByName(name string) (User, bool) {
-	for _, v := range Users {
-		if v.Name == name {
-			return v, true
+func GetUserByName(name string) (user User, err bool) {
+	for _, user = range Users {
+		if user.Name == name {
+			return user, true
 		}
 	}
-	return User{}, false
+	return
 }
 
 func AddUser(name, pwd string) (User, bool) {

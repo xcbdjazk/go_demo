@@ -1,5 +1,6 @@
 package main
 
+// flag
 import (
 	"flag"
 	"fmt"
