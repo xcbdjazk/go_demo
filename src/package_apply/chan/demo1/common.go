@@ -9,7 +9,11 @@ func main() {
 	intChan <- -1
 	fmt.Printf("长度（len）%v, 容量（cap）%v \n ", len(intChan), cap(intChan))
 	//管道取出数据
-	num := <-intChan // len <= 0  会死锁
+	num, ok := <-intChan // len <= 0  会死锁
 	fmt.Println(num)
+	fmt.Println(ok)
+	num, ok = <-intChan // len <= 0  会死锁
+	fmt.Println(num)
+	fmt.Println(ok)
 	fmt.Printf("长度（len）%v, 容量（cap）%v \n ", len(intChan), cap(intChan))
 }

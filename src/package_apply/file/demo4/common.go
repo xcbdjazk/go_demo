@@ -10,7 +10,7 @@ import (
 func main() {
 
 	// 文件copy
-	readFileName := "微信图片_20190831225715.jpg"
+	readFileName := "./微信图片_20190831225715.jpg"
 	file, err := os.Open(readFileName)
 	if err != nil {
 		fmt.Print(err)

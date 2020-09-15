@@ -20,16 +20,18 @@ func main() {
 	reader := bufio.NewReader(file)
 	for {
 		str, err := reader.ReadString('\n')
+		fmt.Println(str)
 		if err == io.EOF { // io.EOF 文件末尾
 			break
 		}
-		fmt.Print(str)
+
 	}
 	//2 ioutil
 	byteSlice, err1 := ioutil.ReadFile(`file.txt`)
 	if err1 != nil {
 
 	}
+	fmt.Println("1233d")
 	fmt.Print(string(byteSlice))
 
 }

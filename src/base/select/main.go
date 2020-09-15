@@ -8,11 +8,13 @@ func main() {
 	c1 = make(chan int, 3)
 	c3 = make(chan int, 3)
 	c1 <- 3
+
+	fmt.Println(len(c1))
 	c3 <- 3
 	select {
 	case i1 = <-c1:
 		fmt.Printf("received ", i1, " from c1\n")
-	case c2 <- i2:
+	case c2 <- i1:
 		fmt.Printf("sent ", i2, " to c2\n")
 	case i3, ok := (<-c3): // same as: i3, ok := <-c3
 		if ok {
