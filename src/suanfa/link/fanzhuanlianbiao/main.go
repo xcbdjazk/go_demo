@@ -39,7 +39,14 @@ func init() {
 		},
 	}
 	l1 := reversrList(l)
-	fmt.Printf("%#v", l1)
+	a := new(ListNode)
+	a = l1
+	for a != nil {
+		fmt.Printf("%#v \n", a)
+		a = a.Next
+
+	}
+	fmt.Println(l1)
 
 }
 
