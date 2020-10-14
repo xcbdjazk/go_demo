@@ -16,6 +16,7 @@ func (q Queue) push() (err error) {
 
 	return
 }
+
 func (q Queue) size() int {
 	return q.front - q.rear
 }

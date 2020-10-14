@@ -2,8 +2,8 @@ package main
 
 import (
 	"fmt"
-	"practice1/account"
-	"practice1/user"
+	"goproject/src/practice1/account"
+	"goproject/src/practice1/user"
 )
 
 func main() {

@@ -1,14 +1,15 @@
 package main
 
 import (
-	"communication_system/model"
-	"communication_system/utils"
 	"fmt"
 	"net"
+
+	"goproject/src/communication_system/model"
+	"goproject/src/communication_system/utils"
 )
 
 func main() {
-	conn, err := net.Dial("tcp", "0.0.0.0:8080")
+	conn, err := net.Dial("tcp", "0.0.0.0:8081")
 	if err != nil {
 		fmt.Println("err", err)
 		return
