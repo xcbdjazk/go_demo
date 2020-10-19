@@ -1,6 +1,7 @@
 package main
 
 import (
+	"fmt"
 	"gorm.io/driver/mysql"
 	"gorm.io/gorm"
 )
@@ -22,28 +23,32 @@ func init() {
 type User struct {
 	gorm.Model
 	Name      string
-	Languages []Language `gorm:"many2many:user_languages;"`
+	Languages []*Language `gorm:"many2many:user_languages;"`
 }
 
 type Language struct {
 	gorm.Model
-	Name string
+	Name  string
+	Users []*User `gorm:"many2many:user_languages;"`
 }
 
 func run() {
 	// ===============创建数据=========
-	db.AutoMigrate(&User{})
-	user := User{
-		Name: "jinzhu",
-		Languages: []Language{
-			{Name: "ZH"},
-			{Name: "EN"},
-		},
-	}
+	//db.AutoMigrate(&User{})
+	//user := User{
+	//	Name: "jinzhu",
+	//	Languages: []*Language{
+	//		{Name: "ZH"},
+	//		{Name: "EN"},
+	//	},
+	//}
 
-	db.Create(&user)
+	//db.Create(&user)
 	//db.Create(u1)
 	// ===============查询数据=========
+	var user User
+	db.Preload("Languages").First(&user)
+	fmt.Println(user.Languages[0].Name)
 }
 func main() {
 	run()
