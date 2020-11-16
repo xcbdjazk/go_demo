@@ -10,7 +10,7 @@ func f(str2 string) string {
 	for i, v := range str2 {
 
 		if string(v) == " " {
-			fmt.Println(string([]rune(str2)[index:i]))
+
 			str = append([]rune{' '}, str...)
 			str = append([]rune(str2)[index:i], str...)
 			index = i + 1
@@ -22,7 +22,7 @@ func f(str2 string) string {
 }
 
 func init() {
-	fmt.Println(f(" as1d ddd as2d 1a1 "))
+	fmt.Println(f("1 as1d ddd as2d 1a1 1"))
 }
 
 func main() {

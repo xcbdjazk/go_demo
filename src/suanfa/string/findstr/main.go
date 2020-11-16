@@ -28,7 +28,7 @@ func findStr(str1, str2 string) bool {
 }
 
 func init() {
-	fmt.Println(findStr("你是我的1", "你是我的"))
+	fmt.Println(findStr("你是我", "你是我的"))
 }
 
 func main() {
