@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"gorm.io/driver/mysql"
 	"gorm.io/gorm"
+	"gorm.io/gorm/clause"
 	"time"
 )
 
@@ -74,14 +75,15 @@ func run() {
 	//r, _ := db.Rows()
 
 	//r.Next()
-	//locking := clause.Locking{Strength: "UPDATE"}
+	locking := clause.Locking{Strength: "UPDATE"}
 
-	//tx := db.Begin()
-	//tx.Debug().Clauses(locking).First(&user,1)
+	tx := db.Begin()
+	tx.Debug().Clauses(locking).First(&user, 1)
 	// 在事务中执行一些 db 操作（从这里开始，您应该使用 'tx' 而不是 'db'）
 	go func() {
-		time.Sleep(time.Second * 2)
-		e := db.First(&user, 2).Update("name", "4").Error
+		//time.Sleep(time.Second * 2)
+		var user1 User
+		e := db.First(&user1, 2).Update("name", "1").Error
 		if e != nil {
 			fmt.Println(e)
 		}
@@ -90,7 +92,7 @@ func run() {
 	//tx.Rollback()
 	time.Sleep(time.Second * 3)
 	// 否则，提交事务
-	//tx.Commit()
+	tx.Commit()
 	//_ = db.Debug().Model(&user).Select(" * ").
 	//	Where("TO_DAYS(created_at) = TO_DAYS(NOW())").First(&user)
 	//fmt.Println(user)
