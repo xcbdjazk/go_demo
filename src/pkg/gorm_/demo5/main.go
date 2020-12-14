@@ -6,7 +6,7 @@ import (
 	"gorm.io/gorm"
 )
 
-// 关联一对多
+// 关联多对多
 // https://gorm.io/zh_CN/docs/has_many.html
 
 var db *gorm.DB
