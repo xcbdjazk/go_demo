@@ -3,7 +3,6 @@ package main
 import (
 	"gorm.io/driver/mysql"
 	"gorm.io/gorm"
-	"time"
 )
 
 // 关联多对多
@@ -21,9 +20,9 @@ func init() {
 }
 
 type Person struct {
-	ID        int
+	ID        uint
 	Name      string
-	Addresses []Address `gorm:"many2many:person_addresses;"`
+	Addresses []Address `gorm:"many2many:person_addresses"`
 }
 
 type Address struct {
@@ -32,20 +31,17 @@ type Address struct {
 }
 
 type PersonAddress struct {
-	PersonID  int
-	AddressID int
-	CreatedAt time.Time
-	DeletedAt gorm.DeletedAt
+	PersonID  uint
+	AddressID uint
+	ID        uint `gorm:"unique;autoIncrement:true"`
 }
 
-//func (PersonAddress) BeforeCreate(db *gorm.DB) error {
-//	return db.SetupJoinTable(&Person{}, "Addresses", &PersonAddress{})
-//
-//}
 func run() {
 	db.AutoMigrate(&Person{})
-	db.AutoMigrate(&Address{})
 	db.AutoMigrate(&PersonAddress{})
+	db.AutoMigrate(&Address{})
+	p := Person{Name: "123", Addresses: []Address{{Name: "1231"}, {Name: "1232"}}}
+	db.Save(&p)
 
 }
 func main() {

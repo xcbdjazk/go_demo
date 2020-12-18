@@ -21,18 +21,18 @@ func init() {
 
 type Tag struct {
 	//gorm.Model
-	ID     uint   `gorm:"primaryKey;autoIncrement:false"`
+	ID     uint   `gorm:"primaryKey;autoIncrement:true"`
 	Locale string `gorm:"primaryKey;autoIncrement:false"`
 	Value  string
 }
 
 type Blog struct {
-	ID         uint   `gorm:"primaryKey"`
-	Locale     string `gorm:"primaryKey"`
-	Subject    string
-	Body       string
-	Tags       []Tag `gorm:"many2many:blog_tags;"`
-	LocaleTags []Tag `gorm:"many2many:locale_blog_tags;ForeignKey:id,locale;References:id"`
+	ID      uint   `gorm:"primaryKey"`
+	Locale  string `gorm:"primaryKey"`
+	Subject string
+	Body    string
+	Tags    []Tag `gorm:"many2many:blog_tags;"`
+	//LocaleTags []Tag `gorm:"many2many:locale_blog_tags;ForeignKey:id,locale;References:id"`
 	SharedTags []Tag `gorm:"many2many:shared_blog_tags;ForeignKey:id;References:id"`
 }
 
