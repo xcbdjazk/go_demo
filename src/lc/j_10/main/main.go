@@ -1,18 +1,21 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+)
 
 func minArray(n []int) int {
 	var (
 		i = 0
 		j = len(n) - 1
 	)
+
 	for i < j {
 		m := (i + j) / 2
-		if n[m] < n[j] {
-			j = m
+		if n[m] > n[j] {
+			i = m + 1
 		} else if n[m] > n[i] {
-			i = m
+			j = m
 		} else {
 			j--
 		}
