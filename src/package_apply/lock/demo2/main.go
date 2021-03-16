@@ -15,11 +15,12 @@ var (
 func read() {
 	lock.RLock()
 	fmt.Println("read")
-	time.Sleep(1120 * time.Millisecond)
+	time.Sleep(200 * time.Millisecond)
 	lock.RUnlock()
 	g.Done()
 
 }
+
 func write() {
 	lock.Lock()
 	fmt.Println("write")

@@ -3,6 +3,9 @@ module goproject
 go 1.15
 
 require (
+	github.com/Shopify/sarama v1.27.2 // indirect
+	github.com/atotto/clipboard v0.1.2
+	github.com/d-tsuji/clipboard v0.0.3
 	github.com/dchest/captcha v0.0.0-20200903113550-03f5f0333e1f
 	github.com/dgrijalva/jwt-go v3.2.0+incompatible
 	github.com/garyburd/redigo v1.6.2
@@ -18,4 +21,5 @@ require (
 	golang.org/x/image v0.0.0-20200927104501-e162460cd6b5 // indirect
 	gorm.io/driver/mysql v1.0.2
 	gorm.io/gorm v1.20.2
+	github.com/elastic/go-elasticsearch/v5 v5.6.2-0.20200227094035-c62d51538ff4
 )
