@@ -1,5 +1,6 @@
 package main
 
+
 func transpose(A [][]int) [][]int {
 	var (
 		b [][]int
