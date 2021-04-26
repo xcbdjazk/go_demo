@@ -1,0 +1,23 @@
+syntax = "proto3";
+// define package
+package user ;
+// stub package path
+option go_package = "/grpc";
+
+// service
+service UserService {
+  rpc login (LoginRequest) returns (LoginResponse) {}
+}
+
+// request param struct
+message LoginRequest {
+  string username = 1;
+  string password = 2;
+}
+
+// response param struct
+message LoginResponse {
+  string username = 1;
+  string password = 2;
+  string phone    = 3;
+}
