@@ -1,6 +1,6 @@
 module go_demo
 
-go 1.15
+go 1.14
 
 require (
 	github.com/d-tsuji/clipboard v0.0.3
@@ -14,7 +14,7 @@ require (
 	github.com/micro/go-micro/v2 v2.9.1
 	github.com/micro/micro/v2 v2.9.3 // indirect
 	github.com/micro/protoc-gen-micro/v2 v2.1.1 // indirect
-	github.com/mojocn/base64Captcha v1.3.1 // indirect
+	github.com/mojocn/base64Captcha v1.3.1
 	github.com/natefinch/lumberjack v2.0.0+incompatible
 	github.com/robfig/cron/v3 v3.0.1
 	github.com/spf13/cobra v1.1.1
@@ -23,6 +23,7 @@ require (
 	go.uber.org/zap v1.16.0
 	golang.org/x/image v0.0.0-20200927104501-e162460cd6b5 // indirect
 	google.golang.org/protobuf v1.26.0
+	gopkg.in/natefinch/lumberjack.v2 v2.0.0 // indirect
 	gorm.io/driver/mysql v1.0.2
 	gorm.io/gorm v1.20.2
 )
