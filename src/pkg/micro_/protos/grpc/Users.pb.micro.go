@@ -60,7 +60,7 @@ func NewUserService(name string, c client.Client) UserService {
 }
 
 func (c *userService) Login(ctx context.Context, in *LoginRequest, opts ...client.CallOption) (*LoginResponse, error) {
-	req := c.c.NewRequest(c.name, "UserService.login", in)
+	req := c.c.NewRequest(c.name, "UserService.Login", in)
 	out := new(LoginResponse)
 	err := c.c.Call(ctx, req, out, opts...)
 	if err != nil {

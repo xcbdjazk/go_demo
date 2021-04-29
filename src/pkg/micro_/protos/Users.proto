@@ -6,7 +6,7 @@ option go_package = "/grpc";
 
 // service
 service UserService {
-  rpc login (LoginRequest) returns (LoginResponse) {}
+  rpc Login (LoginRequest) returns (LoginResponse) {}
 }
 
 // request param struct

@@ -4,6 +4,7 @@ import (
 	"context"
 	"fmt"
 	"github.com/micro/go-micro/v2"
+	"github.com/micro/go-micro/v2/client"
 	"go_demo/src/pkg/micro_/protos/grpc"
 	"log"
 )
@@ -16,10 +17,20 @@ func (s *UserService) Login(ctx context.Context, res *grpc.LoginRequest, rep *gr
 	return nil
 }
 
-type Greeter struct{}
+type Greeter struct {
+	c client.Client
+}
 
+// 服务间调用
 func (g *Greeter) Hello(ctx context.Context, req *grpc.Request, rsp *grpc.Response) error {
 	fmt.Println(req.Name)
+	s := grpc.NewUserService("com.foobar.api.example", g.c)
+	rsp_, err := s.Login(ctx, &grpc.LoginRequest{Username: "333"})
+	if err != nil {
+		fmt.Println(err)
+	}
+	fmt.Println("rsp to Login", rsp_)
+
 	rsp.Greeting = "Hello " + req.Name
 	return nil
 }
@@ -35,7 +46,12 @@ func main() {
 	//if err != nil {
 	//	log.Panic("error")
 	//}
-	err := grpc.RegisterGreeterHandler(s, new(Greeter))
+
+	err := grpc.RegisterGreeterHandler(s, &Greeter{service.Client()})
+	if err != nil {
+		log.Panic("error")
+	}
+	err = grpc.RegisterUserServiceHandler(s, new(UserService))
 	if err != nil {
 		log.Panic("error")
 	}
