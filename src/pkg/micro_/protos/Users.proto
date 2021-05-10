@@ -11,13 +11,21 @@ service UserService {
 
 // request param struct
 message LoginRequest {
-  string username = 1;
+  string username = 1; // 122311
   string password = 2;
 }
 
 // response param struct
+message LoginResponse123 {
+  string username = 1;
+  string password = 2;
+  string phone    = 3;
+}
+
+
 message LoginResponse {
   string username = 1;
   string password = 2;
   string phone    = 3;
+  LoginResponse123  a = 4;
 }
