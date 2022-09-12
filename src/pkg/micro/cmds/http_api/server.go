@@ -5,7 +5,7 @@ import (
 	"github.com/gin-gonic/gin"
 	rpc "github.com/micro/go-micro/v2/client/grpc"
 	"github.com/micro/go-micro/v2/web"
-	"go_demo/src/pkg/micro_/protos/grpc"
+	"go_demo/src/pkg/micro/protos/grpc"
 	"net/http"
 )
 

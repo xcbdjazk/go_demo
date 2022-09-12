@@ -26,4 +26,6 @@ require (
 	gopkg.in/natefinch/lumberjack.v2 v2.0.0 // indirect
 	gorm.io/driver/mysql v1.0.2
 	gorm.io/gorm v1.20.2
+	github.com/aws/aws-sdk-go v1.44.70
+	github.com/Shopify/sarama v1.36.0 // indirect
 )

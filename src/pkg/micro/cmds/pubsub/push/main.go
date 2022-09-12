@@ -5,7 +5,7 @@ import (
 	"github.com/micro/go-micro/v2/metadata"
 	"github.com/micro/go-micro/v2/server"
 	"github.com/micro/go-micro/v2/util/log"
-	proto "go_demo/src/pkg/micro_/cmds/pubsub/push/proto"
+	proto "go_demo/src/pkg/micro/cmds/pubsub/push/proto"
 
 	"context"
 )

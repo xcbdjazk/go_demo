@@ -14,7 +14,7 @@ func yaml() {
 	cwd, err := os.Getwd()
 
 	viper.SetConfigFile("config.yaml")
-	content, err := ioutil.ReadFile(cwd + "/src/pkg/viper_/demo1/config.yaml")
+	content, err := ioutil.ReadFile(cwd + "/src/pkg/viper/demo1/config.yaml")
 	fmt.Println("err1", err)
 	err = viper.ReadConfig(bytes.NewBuffer(content))
 	fmt.Println("err2", err)

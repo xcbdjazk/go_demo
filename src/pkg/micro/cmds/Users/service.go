@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"github.com/micro/go-micro/v2"
 	"github.com/micro/go-micro/v2/client"
-	"go_demo/src/pkg/micro_/protos/grpc"
+	"go_demo/src/pkg/micro/protos/grpc"
 	"log"
 )
 

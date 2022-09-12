@@ -7,7 +7,7 @@ import (
 	"context"
 	"github.com/micro/go-micro/v2"
 	"github.com/micro/go-micro/v2/util/log"
-	proto "go_demo/src/pkg/micro_/cmds/pubsub/push/proto"
+	proto "go_demo/src/pkg/micro/cmds/pubsub/push/proto"
 )
 
 // send events using the publisher

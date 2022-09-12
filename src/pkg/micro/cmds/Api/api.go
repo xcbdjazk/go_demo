@@ -7,7 +7,7 @@ import (
 	"github.com/micro/go-micro/v2"
 	api "github.com/micro/go-micro/v2/api/proto"
 	"github.com/micro/go-micro/v2/errors"
-	proto "go_demo/src/pkg/micro_/cmds/api/proto"
+	proto "go_demo/src/pkg/micro/cmds/api/proto"
 	"log"
 )
 
