@@ -1,0 +1,5 @@
+p, admin1, domain1, /data1, read
+
+p, admin1, domain3, /data3, read
+g, abc, admin1
+g2, 123, admin1, domain3
