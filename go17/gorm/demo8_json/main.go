@@ -32,8 +32,9 @@ func initPgsql() {
 // User 用户
 type User struct {
 	gorm.Model
-	Name    string
-	Profile Profile `gorm:"type:json" json:"profile"`
+	Name     string
+	Profile1 string  `gorm:"type:varchar(30);comment:个人信息" json:"profile1"`
+	Profile  Profile `gorm:"type:json" json:"profile"`
 }
 
 // Profile 个人信息
@@ -58,25 +59,25 @@ func main() {
 	if err != nil {
 		panic(err)
 	}
-	u := User{
-		Name: "maocat",
-		Profile: Profile{
-			Email:   "maocat@gmail.com",
-			PhoneNo: "18888888888",
-		},
-	}
-	db.Save(&u)
-
-	u.Profile.PhoneNo = "13666666666"
-	db.Save(&u)
-
-	var u1 User
-
-	db.Debug().
-		Where(gorm.Expr("profile->>'email' = ?", "maocat@gmail.com")).
-		First(&u1)
-	fmt.Println(u1.Name)
-	fmt.Println(u1.Profile)
+	//u := User{
+	//	Name: "maocat",
+	//	Profile: Profile{
+	//		Email:   "maocat@gmail.com",
+	//		PhoneNo: "18888888888",
+	//	},
+	//}
+	//db.Save(&u)
+	//
+	//u.Profile.PhoneNo = "13666666666"
+	//db.Save(&u)
+	//
+	//var u1 User
+	//
+	//db.Debug().
+	//	Where(gorm.Expr("profile->>'email' = ?", "maocat@gmail.com")).
+	//	First(&u1)
+	//fmt.Println(u1.Name)
+	//fmt.Println(u1.Profile)
 }
 
 func mainMysql() {
