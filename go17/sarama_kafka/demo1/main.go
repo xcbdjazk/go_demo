@@ -1,7 +1,7 @@
 package main
 
 var (
-	address = []string{"192.168.163.121:9092"}
+	address = []string{"192.168.2.170:9092", "192.168.2.170:9093", "192.168.2.170:9094"}
 	topic   = "first"
 )
 

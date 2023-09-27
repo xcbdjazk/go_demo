@@ -74,6 +74,7 @@ func (consumer *Consumer) Setup(_ sarama.ConsumerGroupSession) error {
 }
 func (consumer *Consumer) Cleanup(_ sarama.ConsumerGroupSession) error {
 	fmt.Println("Cleanup")
+
 	return nil
 }
 

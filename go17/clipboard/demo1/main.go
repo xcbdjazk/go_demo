@@ -14,9 +14,13 @@ var a = [...]string{"a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", 
 func main() {
 	s := g()
 	fmt.Println(s)
-	//复制内容到剪贴板
-	fmt.Println(clipboard.Set(s))
+	for {
+		time.Sleep(time.Second)
+		fmt.Println(clipboard.Get())
+	}
 
+	//复制内容到剪贴板
+	//fmt.Println(clipboard.Set(s))
 }
 
 func g() string {
